@@ -12,9 +12,14 @@
     "resolveJsonModule": true,
     "isolatedModules": true,
     "noEmit": true,
-    "jsx": "react",
-    "lib": ["dom"],
-    "types": ["jest", "node"]
+    "jsx": "react-jsx",
+    "lib": [
+      "dom"
+    ],
+    "types": [
+      "jest",
+      "node"
+    ]
   },
   "include": [
     "src/**/*.ts",
