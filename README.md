@@ -23,6 +23,7 @@ There are three types of warnings:
 1. Download Server Unavailable Warning
 2. Upload Server Unavailable Warning
 3. Data Inconsistency Warning
+
 Each type of warning has it's own hardcoded label which you can find in the Figma link attached above.
 
 **Note**: No more than one Site Wide Warning can be ongoing at the same time.
