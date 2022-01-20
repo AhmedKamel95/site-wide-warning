@@ -4,11 +4,16 @@
 client/node_modules
 client/build
 client/.eslintcache
+client/package-lock.json
 
-# client ignores
+# server ignores
 server/node_modules
 server/dist
 server/logs
+server/package-lock.json
+
+# docker image ignores
+data-node
 
 # dependencies
 /.pnp
@@ -30,3 +35,5 @@ server/logs
 npm-debug.log*
 yarn-debug.log*
 yarn-error.log*
+package-lock.json
+node_modules
