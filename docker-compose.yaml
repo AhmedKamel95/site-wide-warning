@@ -27,6 +27,15 @@ services:
             - mongodb
         networks:
             [webappnetwork]
+    lt:
+        build: ./lt/
+        image: lt
+        restart: always
+        command: "lt --port 8000 --subdomain site-wide-warning"
+        depends_on:
+            - server
+        networks:
+            [webappnetwork]
     mongodb:
         image: mongo
         restart: always
