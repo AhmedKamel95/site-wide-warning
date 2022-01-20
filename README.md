@@ -21,7 +21,7 @@ To save you time, the entire dev environment is Dockerized for you. To access yo
 
 2. Once the Codespace container is launched, open a terminal and run:
 ```
-docker-compose up --build
+make
 ```
 
 This will spin up an empty MongoDB instance, the server, and the client.
