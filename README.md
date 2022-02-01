@@ -1,6 +1,8 @@
-# Litebulb Site Wide Warning Project (Full Stack Engineering)
+# Site Wide Warning Project
 
-Welcome to your Litebulb interview!
+Welcome to your Litebulb coding challenge!
+
+Throughout this project, if you have any concerns or questions regarding the logistics or technical specifications of this coding challenge, please directly email support@litebulb.io. Otherwise, please reach out to your recruiter.
 
 ## Background
 All web applications experience catastrophic failures at some point or another. For example, if the "Post" feature suddenly stopped working on Facebook, that's considered a catastrophic failure, and users should get some kind of a warning or notification that their posts might not get successfully created. This could either happen automatically, or administrators of Facebook should have access to an admin console where they can choose to broadcast a warning to all users of Facebook that are being affected.
