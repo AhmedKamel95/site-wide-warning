@@ -28,13 +28,13 @@ make
 
 This will spin up an empty MongoDB instance, the server, and the client.
 
-3. Once it's complete, you can access your GraphQL playground at [https://site-wide-warning.loca.lt/](https://site-wide-warning.loca.lt/), and your React app at the Local Address for what's being forwarded at port 3000 in the PORTS window.
+3. Once it's complete, you can access your GraphQL playground at the link provided in `lt/tunnel`, and your React app at the local address for what's being forwarded at port 3000 in the PORTS window.
 
 3. Seed your DB with at least 2 users.
-4. Your dev environment is now ready! 🚀 Go to the Issues tab to begin your assigned tasks.
+4. Your dev environment is now ready! 🚀 Go to the Issues tab to begin your assigned task(s).
 
 ## Seed Users Data
-To run a user creation mutation call, include this in the main query window in [https://site-wide-warning.loca.lt/](https://site-wide-warning.loca.lt/):
+To run a user creation mutation call, include this in the main query window in your GraphQL playground:
 ```
 mutation CreateUser($user: CreateOneUserInput!){
   userCreateOne(record: $user) {

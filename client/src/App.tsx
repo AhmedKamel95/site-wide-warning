@@ -5,7 +5,7 @@ import {RecoilRoot} from 'recoil';
 import HomeScreen from './containers/HomeScreen';
 
 const client = new ApolloClient({
-  uri: 'https://site-wide-warning.loca.lt/',
+  uri: process.env.REACT_APP_BASE_URL,
   cache: new InMemoryCache(),
 });
 

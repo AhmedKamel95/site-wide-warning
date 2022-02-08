@@ -1,4 +1,3 @@
 start:
-		npm i -g localtunnel
-		lt -p 8000 --subdomain site-wide-warning &
+		bash ./set_localtunnel.sh
 		docker-compose up --build
