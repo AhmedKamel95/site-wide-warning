@@ -1,7 +1,5 @@
 # Site Wide Warning Project
 
-Welcome to your Litebulb coding challenge!
-
 Throughout this project, if you have any concerns or questions regarding the logistics or technical specifications of this coding challenge, please directly email support@litebulb.io. Otherwise, please reach out to your recruiter.
 
 ## Background
