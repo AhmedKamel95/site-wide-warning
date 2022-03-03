@@ -44,7 +44,7 @@ When you open it up, it should look like:
 <img width="700" alt="Screen Shot 2022-03-03 at 2 22 33 AM" src="https://user-images.githubusercontent.com/9297599/156545502-1a303dfe-a296-44e1-b45b-f814e6de87b0.png">
 </p>
 
-5. Your dev environment is now ready! 🚀 Go to the Issues tab to begin your assigned task(s).
+5. Your dev environment is now ready! 🚀 **Go to the Github Issues tab to begin your assigned task(s).**
 
 ## Seed Users
 To run a user creation mutation call, include this in the main query window in your GraphQL playground:
