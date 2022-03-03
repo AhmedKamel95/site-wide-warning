@@ -1,6 +1,6 @@
-# Site Wide Warning Project
+# Site Wide Warning
 
-Throughout this project, if you have any concerns or questions regarding the logistics or technical specifications of this coding challenge, please directly email support@litebulb.io. Otherwise, please reach out to your recruiter.
+Throughout this interview, if you have any concerns or questions regarding the logistics or technical specifications of this coding challenge, please directly email support@litebulb.io. Otherwise, please reach out to your recruiter.
 
 ## Background
 All web applications experience catastrophic failures at some point or another. For example, if the "Post" feature suddenly stopped working on Facebook, that's considered a catastrophic failure, and users should get some kind of a warning or notification that their posts might not get successfully created. This could either happen automatically, or administrators of Facebook should have access to an admin console where they can choose to broadcast a warning to all users of Facebook that are being affected.
@@ -26,12 +26,27 @@ make
 
 This will spin up an empty MongoDB instance, the server, and the client.
 
-3. Once it's complete, you can access your GraphQL playground at the link provided in `lt/tunnel`, and your React app at the local address for what's being forwarded at port 3000 in the PORTS window.
+3. Once it's complete, you can access your GraphQL playground at the link provided in `lt/tunnel`, and your React app at the local address for what's being forwarded at port 3000 in the PORTS window. It should look like this:
 
-3. Seed your DB with at least 2 users.
-4. Your dev environment is now ready! 🚀 Go to the Issues tab to begin your assigned task(s).
+<p align="left">
+  <img width="400" alt="Screen Shot 2022-03-02 at 6 25 53 PM" src="https://user-images.githubusercontent.com/9297599/156543190-3006f411-6abd-4209-912c-8f23aa88ec3d.png">
+</p>
 
-## Seed Users Data
+When you open it up, it should look like:
+<p align="left">
+  <img width="400" alt="Screen Shot 2022-03-03 at 2 20 44 AM" src="https://user-images.githubusercontent.com/9297599/156545261-19004359-926a-49ff-ae08-21bfc4e95797.png">
+</p>
+
+3. Seed your DB with at least 2 users. Use the below "Seed Users" section to achieve this.
+
+4. The client app should now be accessible at whatever URL is being forwarded at port 3000:
+<p align="left">
+<img width="700" alt="Screen Shot 2022-03-03 at 2 22 33 AM" src="https://user-images.githubusercontent.com/9297599/156545502-1a303dfe-a296-44e1-b45b-f814e6de87b0.png">
+</p>
+
+5. Your dev environment is now ready! 🚀 Go to the Issues tab to begin your assigned task(s).
+
+## Seed Users
 To run a user creation mutation call, include this in the main query window in your GraphQL playground:
 ```
 mutation CreateUser($user: CreateOneUserInput!){
@@ -103,7 +118,9 @@ you should see a response that looks like:
 ## Submission
 Prior to submission, ensure that `npm run lint` and `npm run test` don't produce any warnings or errors.
 
-Your final submission should be in the form of a pull request from a remote branch against `main`. Once you're ready to submit, open the Pull Request, add `litebulb-skills-bot` as a reviewer, and document your changes and thought processes in the Pull Request description.
+Your final submission should be in the form of a pull request from a remote branch against `main`. Once you're ready to submit, open the Pull Request, and document your changes and thought processes in the Pull Request description.
+
+When you're sure you're ready to submit, add `litebulb-skills-bot` as a reviewer. You will lose access to the repository, and your submission will be considered closed.
 
 ## Resources
 
