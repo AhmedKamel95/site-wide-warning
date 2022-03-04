@@ -1,7 +1,7 @@
 import React from 'react';
-import ChangeUserModal from './ChangeUserModal';
+import {useSetRecoilState} from 'recoil';
+
 import {showModalState} from '../atoms/ChangeUserModalState';
-import {useRecoilState} from 'recoil';
 
 const styles: {[key: string]: React.CSSProperties} = {
   root: {
@@ -54,8 +54,7 @@ const SettingsMenuItemConfigs = [
 ];
 
 const SettingsMenu = () => {
-  const [showChangeUserModal, setShowChangeUserModal] =
-    useRecoilState(showModalState);
+  const setShowChangeUserModal = useSetRecoilState(showModalState);
 
   return (
     <div style={styles.root}>
@@ -70,7 +69,6 @@ const SettingsMenu = () => {
           {menuItem.label}
         </div>
       ))}
-      {showChangeUserModal ? <ChangeUserModal /> : null}
     </div>
   );
 };
