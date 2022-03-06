@@ -7,7 +7,10 @@ const styles: {[key: string]: React.CSSProperties} = {
     justifyContent: 'flex-start',
     alignItems: 'center',
     width: '300px',
-    backgroundColor: '#EDEDED',
+    backgroundColor: 'white',
+    boxShadow:
+      '0px 6px 20px 0px rgba(176, 190, 197, 0.32), 0px 2px 4px 0px rgba(176, 190, 197, 0.32)',
+    zIndex: -1,
   },
   cta: {
     width: '200px',
@@ -16,6 +19,8 @@ const styles: {[key: string]: React.CSSProperties} = {
     marginTop: '100px',
     marginBottom: '80px',
     borderRadius: '5px',
+    boxShadow:
+      '0px 6px 20px 0px rgba(176, 190, 197, 0.32), 0px 2px 4px 0px rgba(176, 190, 197, 0.32)',
   },
   leftNavItem: {
     backgroundColor: '#C6C6C6',
@@ -23,6 +28,8 @@ const styles: {[key: string]: React.CSSProperties} = {
     height: '60px',
     marginTop: '20px',
     borderRadius: '5px',
+    boxShadow:
+      '0px 6px 20px 0px rgba(176, 190, 197, 0.32), 0px 2px 4px 0px rgba(176, 190, 197, 0.32)',
   },
 };
 
