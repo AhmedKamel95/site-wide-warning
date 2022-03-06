@@ -160,7 +160,6 @@ const ChangeUserModal = () => {
             style={styles.cancelButton}
             onClick={() => {
               setShowModal(false);
-              setShowSettingsMenu(!showSettingsMenu);
             }}
           >
             Cancel

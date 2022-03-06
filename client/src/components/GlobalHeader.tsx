@@ -1,6 +1,5 @@
 import React, {useState} from 'react';
 import Logo from '../assets/logo.png';
-import SettingsMenu from './SettingsMenu';
 import {useRecoilState} from 'recoil';
 import {showSettingsMenuState} from '../atoms/SettingsMenuState';
 import {MdAccountBox} from 'react-icons/md';
@@ -35,7 +34,6 @@ const GlobalHeader = () => {
         onMouseEnter={() => setIconColor('#525252')}
         onMouseLeave={() => setIconColor('#414141')}
       />
-      {showSettingsMenu ? <SettingsMenu /> : null}
     </div>
   );
 };
