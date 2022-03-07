@@ -123,7 +123,8 @@ const ChangeUserModal = () => {
   const [showDropdown, setShowDropdown] = useRecoilState(showDropdownState);
   const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
   const [nextUser, setNextUser] = useRecoilState(nextUserState);
-  const [cancelButtonColor, setCancelButtonColor] = useState('#EDEDED');
+  const [cancelButtonOpacity, setCancelButtonOpacity] = useState(1.0);
+  const [changeUserButtonOpacity, setChangeUserButtonOpacity] = useState(1.0);
   const [iconColor, setIconColor] = useState('#414141');
   const ChevronIcon = showDropdown ? GoChevronUp : GoChevronDown;
 
@@ -193,18 +194,23 @@ const ChangeUserModal = () => {
         ) : null}
         <div style={styles.footer}>
           <div
-            style={{...styles.cancelButton, backgroundColor: cancelButtonColor}}
+            style={{...styles.cancelButton, opacity: cancelButtonOpacity}}
             onClick={onExitModal}
-            onMouseEnter={() => setCancelButtonColor('#DDDDDD')}
-            onMouseLeave={() => setCancelButtonColor('#EDEDED')}
+            onMouseEnter={() => setCancelButtonOpacity(0.8)}
+            onMouseLeave={() => setCancelButtonOpacity(1.0)}
           >
             Cancel
           </div>
           <div
-            style={
-              nextUser === null
-                ? styles.changeUserButtonDisabled
-                : styles.changeUserButton
+            style={{
+              ...styles.changeUserButton,
+              opacity: nextUser === null ? 0.5 : changeUserButtonOpacity,
+            }}
+            onMouseEnter={() =>
+              nextUser !== null && setChangeUserButtonOpacity(0.8)
+            }
+            onMouseLeave={() =>
+              nextUser !== null && setChangeUserButtonOpacity(1.0)
             }
             onClick={event => {
               event.stopPropagation();
