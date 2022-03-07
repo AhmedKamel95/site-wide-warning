@@ -1,9 +1,8 @@
-import React from 'react';
+import React, {useState} from 'react';
 import Logo from '../assets/logo.png';
-import HamburgerMenu from '../assets/hamburger-menu.png';
-import SettingsMenu from './SettingsMenu';
 import {useRecoilState} from 'recoil';
 import {showSettingsMenuState} from '../atoms/SettingsMenuState';
+import {MdAccountBox} from 'react-icons/md';
 
 const styles = {
   root: {
@@ -11,8 +10,10 @@ const styles = {
     justifyContent: 'space-between',
     alignItems: 'center',
     height: '80px',
-    backgroundColor: '#414141',
-    paddingLeft: '100px',
+    backgroundColor: 'white',
+    boxShadow:
+      '0px 6px 20px 0px rgba(176, 190, 197, 0.32), 0px 2px 4px 0px rgba(176, 190, 197, 0.32)',
+    paddingLeft: '40px',
     paddingRight: '20px',
   },
 };
@@ -21,17 +22,18 @@ const GlobalHeader = () => {
   const [showSettingsMenu, setShowSettingsMenu] = useRecoilState(
     showSettingsMenuState
   );
+  const [iconColor, setIconColor] = useState('#414141');
+
   return (
     <div style={styles.root}>
-      <img src={Logo} alt="Logo" width={106} height={20} />
-      <img
-        src={HamburgerMenu}
-        alt="HamburgerMenu"
-        width={30}
-        height={20}
+      <img src={Logo} alt="Logo" height={24} />
+      <MdAccountBox
+        size={30}
         onClick={() => setShowSettingsMenu(!showSettingsMenu)}
+        color={iconColor}
+        onMouseEnter={() => setIconColor('#525252')}
+        onMouseLeave={() => setIconColor('#414141')}
       />
-      {showSettingsMenu ? <SettingsMenu /> : null}
     </div>
   );
 };

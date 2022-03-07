@@ -1,14 +1,14 @@
 import {atom} from 'recoil';
 import {User} from '../models/User';
 
-const currentUserState = atom<User>({
+const currentUserState = atom<User | null>({
   key: 'currentUser',
-  default: {id: '', firstName: '', lastName: '', email: ''},
+  default: null,
 });
 
-const nextUserState = atom<User>({
+const nextUserState = atom<User | null>({
   key: 'nextUser',
-  default: {id: '', firstName: '', lastName: '', email: ''},
+  default: null,
 });
 
 export {currentUserState, nextUserState};
