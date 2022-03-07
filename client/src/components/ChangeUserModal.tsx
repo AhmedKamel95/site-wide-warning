@@ -1,14 +1,13 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useQuery, gql} from '@apollo/client';
 import {useSetRecoilState, useRecoilState} from 'recoil';
 import ChangeUserDropdown from './ChangeUserDropdown';
 import {currentUserState, nextUserState} from '../atoms/UserState';
 import {showDropdownState} from '../atoms/ChangeUserDropdownState';
 import {showModalState} from '../atoms/ChangeUserModalState';
-import {showSettingsMenuState} from '../atoms/SettingsMenuState';
-import DownArrow from '../assets/down-arrow.png';
 import {User, UserGQLResponse} from '../models/User';
 import Logger from '../utils/Logger';
+import {GoChevronDown, GoChevronUp} from 'react-icons/go';
 
 interface UserManyData {
   userMany: UserGQLResponse[];
@@ -39,7 +38,7 @@ const styles: {[key: string]: React.CSSProperties} = {
     top: '0',
     height: '100vh',
     width: '100vw',
-    backgroundColor: 'rgba(0, 0, 0, 0.5)',
+    backgroundColor: 'rgba(0, 0, 0, 0.1)',
     backdropFilter: 'blur(8px)',
   },
   modal: {
@@ -53,6 +52,8 @@ const styles: {[key: string]: React.CSSProperties} = {
     justifyContent: 'flex-start',
     alignItems: 'flex-start',
     color: '#414141',
+    boxShadow:
+      '0px 6px 20px 0px rgba(176, 190, 197, 0.32), 0px 2px 4px 0px rgba(176, 190, 197, 0.32)',
   },
   dropdownButton: {
     display: 'flex',
@@ -100,6 +101,17 @@ const styles: {[key: string]: React.CSSProperties} = {
     borderRadius: '5px',
     cursor: 'default',
   },
+  changeUserButtonDisabled: {
+    display: 'flex',
+    justifyContent: 'center',
+    alignItems: 'center',
+    backgroundColor: '#ABEFEB',
+    opacity: 0.5,
+    width: '140px',
+    height: '50px',
+    borderRadius: '5px',
+    cursor: 'default',
+  },
 };
 
 const ChangeUserModal = () => {
@@ -109,35 +121,59 @@ const ChangeUserModal = () => {
   );
   const setShowModal = useSetRecoilState(showModalState);
   const [showDropdown, setShowDropdown] = useRecoilState(showDropdownState);
-  const [showSettingsMenu, setShowSettingsMenu] = useRecoilState(
-    showSettingsMenuState
-  );
   const [currentUser, setCurrentUser] = useRecoilState(currentUserState);
   const [nextUser, setNextUser] = useRecoilState(nextUserState);
+  const [cancelButtonColor, setCancelButtonColor] = useState('#EDEDED');
+  const [iconColor, setIconColor] = useState('#414141');
+  const ChevronIcon = showDropdown ? GoChevronUp : GoChevronDown;
 
   if (loading) return <p data-testid="loading">Loading...</p>;
   if (error) return <p data-testid="error">Error :(</p>;
 
+  const onExitModal = () => {
+    setShowModal(false);
+    setShowDropdown(false);
+    setNextUser(null);
+  };
+
   return (
-    <div style={styles.root} data-testid="change_user_modal">
-      <div style={styles.modal}>
+    <div
+      style={styles.root}
+      data-testid="change_user_modal"
+      onClick={onExitModal}
+    >
+      <div
+        style={styles.modal}
+        onClick={event => {
+          event.stopPropagation();
+          setShowDropdown(false);
+        }}
+      >
         <h1>
-          Logged in as {currentUser.firstName} {currentUser.lastName}
+          {currentUser
+            ? `Logged in as ${currentUser.firstName} ${currentUser.lastName}`
+            : 'Not Logged In'}
         </h1>
         <h4>Change User</h4>
         <div
           style={styles.dropdownButton}
-          onClick={() => setShowDropdown(!showDropdown)}
+          onClick={event => {
+            event.stopPropagation();
+            setShowDropdown(!showDropdown);
+          }}
         >
           <div>
             {nextUser?.firstName} {nextUser?.lastName}
           </div>
-          <img
-            src={DownArrow}
-            alt="DownArrow"
-            width={18}
-            height={18}
-            style={showDropdown ? styles.rotate180 : {}}
+          <ChevronIcon
+            size={30}
+            color={iconColor}
+            onMouseEnter={() => setIconColor('#525252')}
+            onMouseLeave={() => setIconColor('#414141')}
+            onClick={event => {
+              event.stopPropagation();
+              setShowDropdown(!showDropdown);
+            }}
           />
         </div>
         {showDropdown ? (
@@ -157,31 +193,32 @@ const ChangeUserModal = () => {
         ) : null}
         <div style={styles.footer}>
           <div
-            style={styles.cancelButton}
-            onClick={() => {
-              setShowModal(false);
-            }}
+            style={{...styles.cancelButton, backgroundColor: cancelButtonColor}}
+            onClick={onExitModal}
+            onMouseEnter={() => setCancelButtonColor('#DDDDDD')}
+            onMouseLeave={() => setCancelButtonColor('#EDEDED')}
           >
             Cancel
           </div>
           <div
-            style={styles.changeUserButton}
-            onClick={() => {
-              setShowModal(false);
-              setCurrentUser(nextUser);
-              setNextUser({
-                id: '',
-                firstName: '',
-                lastName: '',
-                email: '',
-              });
-              Logger.info(
-                'Switched user to ' +
-                  nextUser.firstName +
-                  ' ' +
-                  nextUser.lastName
-              );
-              setShowSettingsMenu(!showSettingsMenu);
+            style={
+              nextUser === null
+                ? styles.changeUserButtonDisabled
+                : styles.changeUserButton
+            }
+            onClick={event => {
+              event.stopPropagation();
+              if (nextUser !== null) {
+                setShowModal(false);
+                setCurrentUser(nextUser);
+                Logger.info(
+                  'Switched user to ' +
+                    nextUser?.firstName +
+                    ' ' +
+                    nextUser?.lastName
+                );
+                onExitModal();
+              }
             }}
           >
             Change User
