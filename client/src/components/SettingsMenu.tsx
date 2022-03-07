@@ -1,4 +1,4 @@
-import React from 'react';
+import React, {useState} from 'react';
 import {useSetRecoilState} from 'recoil';
 
 import {showModalState} from '../atoms/ChangeUserModalState';
@@ -20,18 +20,20 @@ const styles: {[key: string]: React.CSSProperties} = {
     top: '90px',
     width: '180px',
     justifyContent: 'flex-start',
-    alignItems: 'flex-start',
+    alignItems: 'stretch',
     borderRadius: '5px',
     boxShadow:
       '0px 6px 20px 0px rgba(176, 190, 197, 0.32), 0px 2px 4px 0px rgba(176, 190, 197, 0.32)',
     padding: '10px',
-    backgroundColor: '#FFFFFF',
   },
   menuItem: {
     padding: '10px',
     fontSize: '16px',
     fontWeight: 'bold',
     cursor: 'default',
+    flex: 1,
+    display: 'flex',
+    justifyContent: 'flex-start',
   },
 };
 
@@ -63,6 +65,9 @@ const SettingsMenuItemConfigs = [
 const SettingsMenu = () => {
   const setShowChangeUserModal = useSetRecoilState(showModalState);
   const setShowSettingsMenu = useSetRecoilState(showSettingsMenuState);
+  const [hoveredMenuItemKey, setHoveredMenuItemKey] = useState<number | null>(
+    null
+  );
 
   return (
     <div style={styles.overlay} onClick={() => setShowSettingsMenu(false)}>
@@ -70,11 +75,17 @@ const SettingsMenu = () => {
         {SettingsMenuItemConfigs.map((menuItem, idx) => (
           <div
             key={idx}
-            style={styles.menuItem}
+            style={{
+              ...styles.menuItem,
+              backgroundColor:
+                hoveredMenuItemKey === idx ? '#EEEEEE' : '#FFFFFF',
+            }}
             onClick={() => {
               setShowSettingsMenu(false);
               menuItem.onClick(setShowChangeUserModal);
             }}
+            onMouseEnter={() => setHoveredMenuItemKey(idx)}
+            onMouseLeave={() => setHoveredMenuItemKey(null)}
           >
             {menuItem.label}
           </div>
