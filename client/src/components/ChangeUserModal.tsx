@@ -8,6 +8,8 @@ import {showModalState} from '../atoms/ChangeUserModalState';
 import {User, UserGQLResponse} from '../models/User';
 import Logger from '../utils/Logger';
 import {GoChevronDown, GoChevronUp} from 'react-icons/go';
+import LoadingOverlay from './LoadingOverlay';
+import ErrorOverlay from './ErrorOverlay';
 
 interface UserManyData {
   userMany: UserGQLResponse[];
@@ -128,8 +130,8 @@ const ChangeUserModal = () => {
   const [iconColor, setIconColor] = useState('#414141');
   const ChevronIcon = showDropdown ? GoChevronUp : GoChevronDown;
 
-  if (loading) return <p data-testid="loading">Loading...</p>;
-  if (error) return <p data-testid="error">Error :(</p>;
+  if (loading) return <LoadingOverlay data-testid="loading" />;
+  if (error) return <ErrorOverlay data-testid="error" />;
 
   const onExitModal = () => {
     setShowModal(false);

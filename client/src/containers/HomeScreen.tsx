@@ -4,6 +4,8 @@ import GlobalHeader from '../components/GlobalHeader';
 import LeftNav from '../components/LeftNav';
 import ScreenContent from '../components/ScreenContent';
 import {UserGQLResponse} from '../models/User';
+import LoadingOverlay from '../components/LoadingOverlay';
+import ErrorOverlay from '../components/ErrorOverlay';
 
 interface UserOneData {
   userOne: UserGQLResponse;
@@ -31,8 +33,8 @@ const styles: {[key: string]: React.CSSProperties} = {
 const HomeScreen = () => {
   const {loading, error, data} = useQuery<UserOneData, {}>(GET_USER);
 
-  if (loading) return <p>Loading...</p>;
-  if (error || data === undefined) return <p>Error :(</p>;
+  if (loading) return <LoadingOverlay />;
+  if (error || data === undefined) return <ErrorOverlay />;
 
   return (
     <div>
