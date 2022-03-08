@@ -9,6 +9,7 @@ import {User, UserGQLResponse} from '../models/User';
 import Logger from '../utils/Logger';
 import {GoChevronDown, GoChevronUp} from 'react-icons/go';
 import LoadingOverlay from './LoadingOverlay';
+import ErrorOverlay from './ErrorOverlay';
 
 interface UserManyData {
   userMany: UserGQLResponse[];
@@ -130,7 +131,7 @@ const ChangeUserModal = () => {
   const ChevronIcon = showDropdown ? GoChevronUp : GoChevronDown;
 
   if (loading) return <LoadingOverlay data-testid="loading" />;
-  if (error) return <p data-testid="error">Error :(</p>;
+  if (error) return <ErrorOverlay data-testid="error" />;
 
   const onExitModal = () => {
     setShowModal(false);
