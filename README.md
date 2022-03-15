@@ -19,32 +19,38 @@ To save you time, the entire dev environment is Dockerized for you. To access yo
   <img src="https://docs.github.com/assets/cb-244965/images/help/codespaces/new-codespace-button.png" width="250">
 </p>
 
-2. Once the Codespace container is launched, open a terminal and run:
+2. Once the Codespace container is setup, expose the server port 8000 AND 3000: 
+
+    In your codespace, under the text editor, click "Ports".
+  <p align="left">
+    <img src="https://docs.github.com/assets/cb-21955/images/help/codespaces/ports-tab.png" width="400">
+  </p>
+    &nbsp&nbsp&nbsp&nbsp Right click the port 8000, select the "Port Visibility" menu, then click Public. Now, do the same for port 3000.
+  <p align="left">
+    <img src="https://docs.github.com/assets/cb-27203/images/help/codespaces/make-public-option.png" width="400">
+  </p>
+
+3. Once the Codespace container is launched, open a terminal and run:
 ```
 make
 ```
 
 This will spin up an empty MongoDB instance, the server, and the client.
 
-3. Once it's complete, you can access your GraphQL playground at the link provided in `lt/tunnel`, and your React app at the local address for what's being forwarded at port 3000 in the PORTS window. It should look like this:
+4. Once it's complete, you can access your GraphQL playground and your React app at the local address for what's being forwarded at port 8000 and 3000, respectively, in the PORTS window. 
 
-<p align="left">
-  <img width="400" alt="Screen Shot 2022-03-02 at 6 25 53 PM" src="https://user-images.githubusercontent.com/9297599/156543190-3006f411-6abd-4209-912c-8f23aa88ec3d.png">
-</p>
-
-When you open it up, it should look like:
-<p align="left">
-  <img width="400" alt="Screen Shot 2022-03-03 at 2 20 44 AM" src="https://user-images.githubusercontent.com/9297599/156545261-19004359-926a-49ff-ae08-21bfc4e95797.png">
-</p>
-
-3. Seed your DB with at least 2 users. Use the below "Seed Users" section to achieve this.
-
-4. The client app should now be accessible at whatever URL is being forwarded at port 3000:
 <p align="left">
 <img width="700" alt="Screen Shot 2022-03-03 at 2 22 33 AM" src="https://user-images.githubusercontent.com/9297599/156545502-1a303dfe-a296-44e1-b45b-f814e6de87b0.png">
 </p>
 
-5. Your dev environment is now ready! 🚀 **Go to the Github Issues tab to begin your assigned task(s).**
+Your GraphQL playground should look like this:
+<p align="left">
+  <img width="400" alt="Screen Shot 2022-03-03 at 2 20 44 AM" src="https://user-images.githubusercontent.com/9297599/156545261-19004359-926a-49ff-ae08-21bfc4e95797.png">
+</p>
+
+5. Seed your DB with at least 2 users. Use the below "Seed Users" section to achieve this.
+
+6. Your dev environment is now ready! 🚀 **Go to the Github Issues tab to begin your assigned task(s).**
 
 ## Seed Users
 To run a user creation mutation call, include this in the main query window in your GraphQL playground:

@@ -1,4 +1,3 @@
 start:
-		bash ./set_localtunnel.sh
-		sudo chown -R codespace .
+		bash ./set_baseurl.sh
 		docker-compose up --build
