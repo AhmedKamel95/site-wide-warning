@@ -12,48 +12,35 @@ All web applications experience catastrophic failures at some point or another. 
 
 **Web App Client**: React.js, Recoil.js, Apollo Client
 
-## Setup
-To save you time, the entire dev environment is Dockerized for you. To access your dev environment:
-1. Open a Github Codespace for this repo, select the smallest container specs available.
-<p align="left">
-  <img src="https://docs.github.com/assets/cb-244965/images/help/codespaces/new-codespace-button.png" width="250">
-</p>
+## Set up Node server on Mac/Linux
 
-2. Once the Codespace container is setup, expose the server port 8000 AND 3000: 
+To begin setting up this app, you'll need to install each of these tools on your machine:
+1. [Brew](https://brew.sh/)
+2. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+3. [Node.js + NPM](https://www.npmjs.com/get-npm)
+4. [MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
 
-    In your codespace, under the text editor, click "Ports".
-  <p align="left">
-    <img src="https://docs.github.com/assets/cb-21955/images/help/codespaces/ports-tab.png" width="400">
-  </p>
-    &nbsp&nbsp&nbsp&nbsp Right click the port 8000, select the "Port Visibility" menu, then click Public. Now, do the same for port 3000.
-  <p align="left">
-    <img src="https://docs.github.com/assets/cb-27203/images/help/codespaces/make-public-option.png" width="400">
-  </p>
-
-3. Once the Codespace container is launched, open a terminal and run:
+After you've cloned the repo locally, in one terminal shell, run:
 ```
-make
+brew services start mongodb-community@4.4
+```
+Note: the MongoDB version might be different for you
+
+This runs a local instance of MongoDB on your machine at [mongodb://127.0.0.1:27017](mongodb://127.0.0.1:27017). Note, if your instance of MongoDB is running at a different address, please update the `MONGODB_URI` configuration in `.env` to match that address.
+
+In a different terminal shell at this project's root directory, run:
+```
+cd server/
+npm install
+npm run dev
 ```
 
-This will spin up an empty MongoDB instance, the server, and the client.
+This runs a local instance of your Express Node.js server. The Apollo GraphiQL server's out-of-the-box IDE can be found at [http://localhost:8000](http://localhost:8000). All data created and fetched through this GraphQL server will be stored in your local MongoDB instance.
 
-4. Once it's complete, you can access your GraphQL playground and your React app at the local address for what's being forwarded at port 8000 and 3000, respectively, in the PORTS window. 
-
-<p align="left">
-<img width="700" alt="Screen Shot 2022-03-03 at 2 22 33 AM" src="https://user-images.githubusercontent.com/9297599/156545502-1a303dfe-a296-44e1-b45b-f814e6de87b0.png">
-</p>
-
-Your GraphQL playground should look like this:
-<p align="left">
-  <img width="400" alt="Screen Shot 2022-03-03 at 2 20 44 AM" src="https://user-images.githubusercontent.com/9297599/156545261-19004359-926a-49ff-ae08-21bfc4e95797.png">
-</p>
-
-5. Seed your DB with at least 2 users. Use the below "Seed Users" section to achieve this.
-
-6. Your dev environment is now ready! 🚀 **Go to the Github Issues tab to begin your assigned task(s).**
-
-## Seed Users
-To run a user creation mutation call, include this in the main query window in your GraphQL playground:
+## Seed Users Data
+Before you begin building your solution, you'll need to create a couple (at least 2) users in your database first.
+The User schema, Query, and Mutation endpoints have already been given to you.
+To run a user creation mutation call, include this in the main query window in [http://localhost:8000](http://localhost:8000):
 ```
 mutation CreateUser($user: CreateOneUserInput!){
   userCreateOne(record: $user) {
@@ -66,7 +53,7 @@ mutation CreateUser($user: CreateOneUserInput!){
 }
 ```
 
-Then, add user details in the Query Variables window:
+Then, add user details in the Query Variables window (you can use whatever name and email you want):
 ```
 {
   "user": {
@@ -103,7 +90,6 @@ query {
   }
 }
 ```
-
 you should see a response that looks like:
 ```
 {
@@ -119,6 +105,29 @@ you should see a response that looks like:
   }
 }
 ```
+Now, when you open the app on the browser, click on the "Change Users" menu item in the top right, you should see the users you created in that list.
+
+## Set up React client
+To begin setting up, you'll need:
+1. [Brew](https://brew.sh/) (only for Mac OS)
+2. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
+3. [Node.js + NPM](https://www.npmjs.com/get-npm)
+
+After you've cloned the repo locally, go to the root directory of the project, and run:
+```
+npm install
+```
+
+To run the app locally, run:
+```
+npm start
+```
+
+This runs the app in the development mode.\
+Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
+
+The page will reload if you make edits.\
+You will also see any lint errors in the console.
 
 
 ## Submission
