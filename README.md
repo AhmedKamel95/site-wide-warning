@@ -12,30 +12,18 @@ All web applications experience catastrophic failures at some point or another. 
 
 **Web App Client**: React.js, Recoil.js, Apollo Client
 
-## Set up Node server on Mac/Linux
+## Set up for local development
 
-To begin setting up this app, you'll need to install each of these tools on your machine:
-1. [Brew](https://brew.sh/)
-2. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-3. [Node.js + NPM](https://www.npmjs.com/get-npm)
-4. [MongoDB](https://docs.mongodb.com/manual/administration/install-community/)
+To begin setting up this app, you'll need to have docker compose installed locally 
+- [Docker Compose](https://docs.docker.com/compose/install/)
 
-After you've cloned the repo locally, in one terminal shell, run:
+After you've cloned this project repo, run 
 ```
-brew services start mongodb-community@4.4
-```
-Note: the MongoDB version might be different for you
-
-This runs a local instance of MongoDB on your machine at [mongodb://127.0.0.1:27017](mongodb://127.0.0.1:27017). Note, if your instance of MongoDB is running at a different address, please update the `MONGODB_URI` configuration in `.env` to match that address.
-
-In a different terminal shell at this project's root directory, run:
-```
-cd server/
-npm install
-npm run dev
+docker-compose up --build
 ```
 
-This runs a local instance of your Express Node.js server. The Apollo GraphiQL server's out-of-the-box IDE can be found at [http://localhost:8000](http://localhost:8000). All data created and fetched through this GraphQL server will be stored in your local MongoDB instance.
+This spins up a GraphQL playground at [http://localhost:8000/](http://localhost:8000/), and the app at [http://localhost:3000/](http://localhost:3000/)
+
 
 ## Seed Users Data
 Before you begin building your solution, you'll need to create a couple (at least 2) users in your database first.
@@ -106,29 +94,6 @@ you should see a response that looks like:
 }
 ```
 Now, when you open the app on the browser, click on the "Change Users" menu item in the top right, you should see the users you created in that list.
-
-## Set up React client
-To begin setting up, you'll need:
-1. [Brew](https://brew.sh/) (only for Mac OS)
-2. [Git](https://git-scm.com/book/en/v2/Getting-Started-Installing-Git)
-3. [Node.js + NPM](https://www.npmjs.com/get-npm)
-
-After you've cloned the repo locally, go to the root directory of the project, and run:
-```
-npm install
-```
-
-To run the app locally, run:
-```
-npm start
-```
-
-This runs the app in the development mode.\
-Open [http://localhost:3000](http://localhost:3000) to view it in the browser.
-
-The page will reload if you make edits.\
-You will also see any lint errors in the console.
-
 
 ## Submission
 Prior to submission, ensure that `npm run lint` and `npm run test` don't produce any warnings or errors.
