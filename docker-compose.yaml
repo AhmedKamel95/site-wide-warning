@@ -2,7 +2,7 @@ version: "2"
 services:
     client:
         build: ./client/
-        image: webapp-client
+        image: site-wide-warning-client
         restart: always
         ports:
             - "3000:3000"
@@ -16,7 +16,7 @@ services:
             [webappnetwork]
     server:
         build: ./server/
-        image: webapp-server
+        image: site-wide-warning-server
         restart: always
         ports:
             - "8000:8000"
@@ -30,7 +30,7 @@ services:
     mongodb:
         image: mongo
         restart: always
-        container_name: mongodb
+        container_name: site-wide-warning-mongodb
         volumes:
             - ./data-node:/data/db
         ports:
