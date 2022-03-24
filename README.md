@@ -22,7 +22,9 @@ After you've cloned this project repo, run
 docker-compose up --build
 ```
 
-This spins up a GraphQL playground at [http://localhost:8000/](http://localhost:8000/), and the app at [http://localhost:3000/](http://localhost:3000/)
+This spins up a GraphQL playground at [http://localhost:8000/](http://localhost:8000/), and the app at [http://localhost:3000/](http://localhost:3000/).  
+From the GraphQL playground, seed some users (follow the instructions below).  
+Your dev environment is now ready! 🚀 Go to the Issues tab to begin your assigned tasks.  
 
 
 ## Seed Users Data
