@@ -1,0 +1,31 @@
+iFor this task, you will be building UI for the site-wide warning bar in an existing web app, along with an admin console for admins to turn warnings on and off. The mock ups are at this Figma link.
+
+A user must be able to dismiss the current ongoing warning. If a warning is updated to a different type, the user should see the new warning. Similarly, if a user dismissed the current warning, but it's ended, and a new warning starts, they should see the new warning.
+
+A warning consists of at least two fields:
+
+type: SiteWideWarningType
+label: String
+
+There are three types of warnings:
+
+    Download Server Unavailable Warning
+    Upload Server Unavailable Warning
+    Data Inconsistency Warning
+
+Each type of warning has it's own hardcoded label which you can find in the Figma link attached above.
+
+Note 1: You don't need to make server side changes, all changes should be in the client subfolder. It's expected that in-app state changes won't persist after you refresh the page.
+
+Note 2: No more than one Site Wide Warning can be ongoing at the same time.
+
+Steps:
+
+    Set up your local dev environment first. Refer to the set up instructions in the README.
+    Seed your database with a few users. This is necessary to test user-level warning dismissal. Refer to the data seeding instructions in the README.
+    Build your solution in client.
+    Log key events (ie: warning created, warning dismissed, etc) using the provided logger util. The more thorough your logs are, the better.
+
+You are allowed to edit, remove, or add any file in this repository to complete the task.
+
+https://www.figma.com/file/Jx9AjonVHhkcomBA21RQoP/%5BNew%5D-Site-Wide-Warning?node-id=0%3A1
